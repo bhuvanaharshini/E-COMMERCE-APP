@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAFAF8;
+  --foreground: #1A2E1A;
+  --primary: #2D6A4F;
+  --primary-foreground: #FFFFFF;
+  --secondary: #B7E4C7;
+  --secondary-foreground: #1A2E1A;
+  --accent: #74C69D;
+  --accent-foreground: #1A2E1A;
+  --muted: #F0F4F0;
+  --muted-foreground: #5A7A5A;
+  --card: #FFFFFF;
+  --card-foreground: #1A2E1A;
+  --border: #D4E6D4;
+  --input: #E8F0E8;
+  --ring: #74C69D;
+  --radius: 1rem;
+  --font-sans: var(--font-plus-jakarta-sans), sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 230, 212, 0.6);
+  }
+
+  .magnetic-btn {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .text-hero-xl {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+
+  .text-display {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .blob-primary {
+    background: radial-gradient(circle, rgba(116, 198, 157, 0.25) 0%, transparent 70%);
+    filter: blur(60px);
+  }
+
+  .blob-secondary {
+    background: radial-gradient(circle, rgba(45, 106, 79, 0.12) 0%, transparent 70%);
+    filter: blur(80px);
+  }
+
+  .product-card-hover {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .product-card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px -12px rgba(45, 106, 79, 0.18);
+  }
+
+  .nav-pill {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 230, 212, 0.5);
+    box-shadow: 0 8px 32px -8px rgba(45, 106, 79, 0.1);
+  }
+
+  .badge-eco {
+    background: rgba(116, 198, 157, 0.15);
+    border: 1px solid rgba(116, 198, 157, 0.4);
+    color: var(--primary);
+  }
+
+  .input-eco {
+    background: var(--input);
+    border: 1.5px solid var(--border);
+    border-radius: 0.75rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .input-eco:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(116, 198, 157, 0.2);
+  }
+
+  .status-processing { background: rgba(251, 191, 36, 0.12); color: #92400e; border: 1px solid rgba(251, 191, 36, 0.3); }
+  .status-shipped { background: rgba(59, 130, 246, 0.1); color: #1e40af; border: 1px solid rgba(59, 130, 246, 0.25); }
+  .status-delivered { background: rgba(45, 106, 79, 0.1); color: #2D6A4F; border: 1px solid rgba(45, 106, 79, 0.25); }
+  .status-cancelled { background: rgba(239, 68, 68, 0.1); color: #b91c1c; border: 1px solid rgba(239, 68, 68, 0.2); }
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
